@@ -10,24 +10,30 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { WebView } from 'react-native-webview';
-import { RNCamera } from 'react-native-camera';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-const handleEvent = (event) => {
-  if(event == "qr"){
 
-  }
-}
       // document.addEventListener("click", function(event) {
       //   native = false
       //   // window.ReactNativeWebView.postMessage(event.target)
       //   // window.ReactNativeWebView.postMessage(event.target.outerHTML)
       // })
 export default class BurnerWallet extends Component {
+
+   handleEvent = (event) => {
+    if(event == "qr"){
+      console.log("I got a QR")
+      this.props.navigation.navigate('Camera')
+    }
+    if(event == "burn"){
+      console.log("I got a QR")
+    }
+  }
+
   render() {
     console.log("Rendering")
     let runFirst = `
@@ -41,7 +47,7 @@ export default class BurnerWallet extends Component {
         source={{ uri: 'http://192.168.100.143:3000' }}
         injectedJavaScript={runFirst}
         onMessage={event => {
-          handleEvent(event.nativeEvent.data);
+          this.handleEvent(event.nativeEvent.data);
         }}
       />
     );
