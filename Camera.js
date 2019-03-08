@@ -1,12 +1,14 @@
 'use strict';
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, View , Vibration} from 'react-native';
+import { AppRegistry, StyleSheet, Text, TouchableWithoutFeedback, View , Vibration} from 'react-native';
 import { RNCamera } from 'react-native-camera';
 
 export default class Camera extends Component {
+  found = false
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} onLongPress>
+        <TouchableWithoutFeedback onLongPress={() => {this.props.navigation.goBack()}}>
         <RNCamera
           ref={ref => {
             this.camera = ref;
@@ -17,10 +19,15 @@ export default class Camera extends Component {
           permissionDialogTitle={'Permission to use camera'}
           permissionDialogMessage={'We need your permission to use your camera phone'}
           onBarCodeRead={( event ) => {
-            Vibration.vibrate();
+            if(!this.found){ // only vibrate once
+              Vibration.vibrate();
+              this.found = true
+            }
             console.log(event.data);
+            this.props.navigation.goBack(); // go back to burner webView
           }}
-        />
+          />
+        </TouchableWithoutFeedback>
       </View>
     );
   }
