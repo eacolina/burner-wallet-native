@@ -8,20 +8,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { View, StyleSheet, Text, SafeAreaView } from 'react-native';
 import { WebView } from 'react-native-webview';
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-      // document.addEventListener("click", function(event) {
-      //   native = false
-      //   // window.ReactNativeWebView.postMessage(event.target)
-      //   // window.ReactNativeWebView.postMessage(event.target.outerHTML)
-      // })
 export default class BurnerWallet extends Component {
 
    handleEvent = (event) => {
@@ -34,22 +23,31 @@ export default class BurnerWallet extends Component {
     }
   }
 
+  componentWillReceiveProps(){
+    const destAddress = this.props.navigation.getParam('data', '');
+    if (destAddress != ''){
+      this.webref.injectJavaScript(`window.sendToAddress('${destAddress}')`)
+    } 
+  }
+
   render() {
     console.log("Rendering")
     let runFirst = `
       window.isReactNative = true
-
     `
     return (
-      <WebView
-        originWhitelist={['*']}
-        styles={{marginTop: 40}}
-        source={{ uri: 'http://192.168.100.143:3000' }}
-        injectedJavaScript={runFirst}
-        onMessage={event => {
-          this.handleEvent(event.nativeEvent.data);
-        }}
-      />
+      <SafeAreaView style={styles.container}>
+        <WebView
+          style={styles.container}
+          originWhitelist={['*']}
+          source={{ uri: 'http://7c8d6cc4.ngrok.io' }}
+          injectedJavaScript={runFirst}
+          ref={r => (this.webref = r)}
+          onMessage={event => {
+            this.handleEvent(event.nativeEvent.data);
+          }}
+          />
+      </SafeAreaView>
     );
   }
 }
@@ -57,9 +55,7 @@ export default class BurnerWallet extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#292929',
   },
   welcome: {
     fontSize: 20,

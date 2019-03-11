@@ -1,15 +1,23 @@
 'use strict';
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableWithoutFeedback, View , Vibration} from 'react-native';
+import { AppRegistry, Image, StyleSheet, TouchableOpacity, View , Vibration} from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Camera extends Component {
   found = false
+  barcodeHandler =  ( barcode ) => {
+    if(!this.found){ // only vibrate once
+      Vibration.vibrate();
+      this.found = true
+    }
+    console.log(barcode.data);
+    this.props.navigation.navigate('Home', {data: barcode.data}); // go back to burner webView and pass the decoded address
+  }
   render() {
     return (
       <View style={styles.container} onLongPress>
-        <TouchableWithoutFeedback onLongPress={() => {this.props.navigation.goBack()}}>
-        <RNCamera
+          <RNCamera
           ref={ref => {
             this.camera = ref;
           }}
@@ -18,16 +26,12 @@ export default class Camera extends Component {
           flashMode={RNCamera.Constants.FlashMode.on}
           permissionDialogTitle={'Permission to use camera'}
           permissionDialogMessage={'We need your permission to use your camera phone'}
-          onBarCodeRead={( event ) => {
-            if(!this.found){ // only vibrate once
-              Vibration.vibrate();
-              this.found = true
-            }
-            console.log(event.data);
-            this.props.navigation.goBack(); // go back to burner webView
-          }}
-          />
-        </TouchableWithoutFeedback>
+          onBarCodeRead={this.barcodeHandler}
+          >
+          <TouchableOpacity style={{position:"absolute", left: 30, top: 40}} onPress={() => {this.props.navigation.goBack()}}>
+            <Icon name="ios-close" size={50} color="#FFFFFF" />
+          </TouchableOpacity>
+          </RNCamera>   
       </View>
     );
   }
@@ -46,7 +50,6 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
     borderRadius: 5,
     padding: 15,
     paddingHorizontal: 20,
