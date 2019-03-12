@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-import { AppRegistry, Image, StyleSheet, TouchableOpacity, View , Vibration} from 'react-native';
+import { StyleSheet, TouchableOpacity, View , Vibration, Text, SafeAreaView} from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -16,21 +16,26 @@ export default class Camera extends Component {
   }
   render() {
     return (
-      <View style={styles.container} onLongPress>
+      <View style={styles.container}>
           <RNCamera
-          ref={ref => {
-            this.camera = ref;
-          }}
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          permissionDialogTitle={'Permission to use camera'}
-          permissionDialogMessage={'We need your permission to use your camera phone'}
-          onBarCodeRead={this.barcodeHandler}
+            ref={ref => {
+              this.camera = ref;
+            }}
+            style={styles.preview}
+            type={RNCamera.Constants.Type.back}
+            flashMode={RNCamera.Constants.FlashMode.on}
+            permissionDialogTitle={'Permission to use camera'}
+            permissionDialogMessage={'We need your permission to use your camera phone'}
+            onBarCodeRead={this.barcodeHandler}
           >
-          <TouchableOpacity style={{position:"absolute", left: 30, top: 40}} onPress={() => {this.props.navigation.goBack()}}>
-            <Icon name="ios-close" size={50} color="#FFFFFF" />
-          </TouchableOpacity>
+            <SafeAreaView style={{alignContent:"center"}}>
+              <Text style={{color: "#FFFFFF", fontSize:17,textAlign:"center"}}>
+                Hold your device over the QR Code so that{"\n"}it's clearly visible within in the screen.
+              </Text>
+            </SafeAreaView>
+            <TouchableOpacity style={{position:"absolute", left: 30, top: 40}} onPress={() => {this.props.navigation.goBack()}}>
+              <Icon name="ios-close" size={50} color="#FFFFFF" />
+            </TouchableOpacity>
           </RNCamera>   
       </View>
     );
@@ -48,12 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  capture: {
-    flex: 0,
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
-  },
+  instructions: {
+    color: "#FFFFFF"
+  }
 });
