@@ -40,7 +40,7 @@ export default class BurnerWallet extends Component {
         <WebView
           style={styles.container}
           originWhitelist={['*']}
-          source={{ uri: 'http://7c8d6cc4.ngrok.io' }}
+          source={{ uri: 'http://47359b95.ngrok.io' }}
           injectedJavaScript={runFirst}
           ref={r => (this.webref = r)}
           onMessage={event => {
