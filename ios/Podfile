@@ -33,6 +33,7 @@ target 'burner_native' do
 
   pod 'react-native-randombytes', :path => '../node_modules/react-native-randombytes'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
   target 'burner_nativeTests' do
     inherit! :search_paths
   end

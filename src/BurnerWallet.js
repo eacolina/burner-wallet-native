@@ -12,6 +12,8 @@ import { StyleSheet, SafeAreaView, AsyncStorage } from 'react-native';
 import { WebView } from 'react-native-webview';
 import * as wallet from 'ethereumjs-wallet'
 import * as base64url from 'base64url'
+import LinearGradient from 'react-native-linear-gradient';
+
 let PK_STORAGE_KEY = 'private_key' 
 let BURNER_URL = 'https://burner-wallet-intern.herokuapp.com/pk#'
 export default class BurnerWallet extends Component {
@@ -108,7 +110,8 @@ export default class BurnerWallet extends Component {
       window.isReactNative = true
     `
     return (
-      <SafeAreaView style={styles.container}>
+      <LinearGradient colors={['#292929', '#191919']} style={styles.container}>
+        <SafeAreaView style={styles.container}>
         <WebView
           style={styles.container}
           originWhitelist={['*']}
@@ -119,7 +122,8 @@ export default class BurnerWallet extends Component {
             this.handleEvent(event.nativeEvent.data);
           }}
           />
-      </SafeAreaView>
+        </SafeAreaView>
+      </LinearGradient>
     );
   }
 }
@@ -127,7 +131,6 @@ export default class BurnerWallet extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#292929',
   },
   welcome: {
     fontSize: 20,
