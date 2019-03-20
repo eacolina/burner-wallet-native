@@ -49,6 +49,8 @@ PODS:
     - React
   - react-native-camera/RN (1.13.0):
     - React
+  - react-native-randombytes (3.5.2):
+    - React
   - React/Core (0.58.6):
     - yoga (= 0.58.6.React)
   - React/CxxBridge (0.58.6):
@@ -88,6 +90,8 @@ PODS:
     - React/RCTBlob
   - RNGestureHandler (1.0.17):
     - React
+  - RNVectorIcons (6.3.0):
+    - React
   - yoga (0.58.6.React)
 
 DEPENDENCIES:
@@ -113,6 +117,7 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - react-native-camera (from `../node_modules/react-native-camera`)
+  - react-native-randombytes (from `../node_modules/react-native-randombytes`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -122,6 +127,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
@@ -169,8 +175,12 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native
   react-native-camera:
     :path: ../node_modules/react-native-camera
+  react-native-randombytes:
+    :path: ../node_modules/react-native-randombytes
   RNGestureHandler:
     :path: ../node_modules/react-native-gesture-handler
+  RNVectorIcons:
+    :path: ../node_modules/react-native-vector-icons
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga
 
@@ -198,9 +208,11 @@ SPEC CHECKSUMS:
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 130b87b2d5e2baac646954282cab87be986d98fc
   react-native-camera: d3c7ee5c9a4ecee37c9c82c6deef884c74fef168
+  react-native-randombytes: 72fcf9b00ff80a28b7420d4c76286287c8ab9b0d
   RNGestureHandler: c33871a91c10f7b4df79d1829fc8fe0d8ada0df0
+  RNVectorIcons: cb42a5653c046f12ca16c9480c571b52620559e8
   yoga: 32d7ef1081951e9a35a4c72a7be797598b138a48
 
-PODFILE CHECKSUM: f2c76ffdd116e8036908f060327d2ce0dff8ffcf
+PODFILE CHECKSUM: ddf1280bb284e5f94b1d91880d638f867c74152b
 
 COCOAPODS: 1.3.1

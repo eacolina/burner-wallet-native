@@ -13,7 +13,7 @@ import { WebView } from 'react-native-webview';
 import * as wallet from 'ethereumjs-wallet'
 import * as base64url from 'base64url'
 let PK_STORAGE_KEY = 'private_key' 
-let BURNER_URL = 'http://87bbb771.ngrok.io/pk#'
+let BURNER_URL = 'https://burner-wallet-intern.herokuapp.com/pk#'
 export default class BurnerWallet extends Component {
   constructor() {
     super();
@@ -104,7 +104,6 @@ export default class BurnerWallet extends Component {
   render() {
     console.log("Rendering")
     console.log("URL", this.state.URL)
-
     let runFirst = `
       window.isReactNative = true
     `
