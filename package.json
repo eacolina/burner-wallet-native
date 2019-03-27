@@ -5,13 +5,14 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "postinstall": "node_modules/.bin/rn-nodeify --install crypto --hack"
+    "postinstall": "node_modules/.bin/rn-nodeify --install \"crypto, stream, vm\" --hack"
   },
   "dependencies": {
     "@unimodules/core": "^0.2.1",
     "assert": "^1.4.1",
     "base64url": "^3.0.1",
     "ethereumjs-wallet": "^0.6.3",
+    "base-x": "3.0.0",
     "events": "^1.1.1",
     "expo-camera": "^3.0.0",
     "expo-permissions": "^3.0.0",
@@ -19,6 +20,7 @@
     "react-native": "0.58.6",
     "react-native-camera": "^1.13.0",
     "react-native-crypto": "^2.1.2",
+    "react-native-gesture-handler": "^1.1.0",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-randombytes": "^3.5.2",
     "react-native-vector-icons": "^6.3.0",
