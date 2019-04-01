@@ -8,7 +8,7 @@
  */
 
 import React, {Component} from 'react';
-import { StyleSheet, SafeAreaView, AsyncStorage } from 'react-native';
+import { StyleSheet, SafeAreaView, AsyncStorage, Text } from 'react-native';
 import { WebView } from 'react-native-webview';
 import * as wallet from 'ethereumjs-wallet'
 import * as base64url from 'base64url'
@@ -118,6 +118,8 @@ export default class BurnerWallet extends Component {
           source={{ uri: this.state.URL }}
           injectedJavaScript={runFirst}
           ref={r => (this.webref = r)}
+          startInLoadingState={true}
+          renderLoading={() => <Text>Hello!!!!!</Text>}
           onMessage={event => {
             this.handleEvent(event.nativeEvent.data);
           }}
