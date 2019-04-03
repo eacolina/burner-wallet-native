@@ -17,13 +17,14 @@ import SplashScreen from './SplashScreen'
 
 let PK_STORAGE_KEY = 'private_key' 
 let BURNER_URL = 'https://burner-wallet-intern.herokuapp.com/pk#'
+let IGNORE_IDENTICAL_PARAM = 'ignoreIdenticalPK=true' // used to prevent WebView from displaying 'Identical PK' alert
 export default class BurnerWallet extends Component {
   constructor() {
     super();
     this.state = {}
     this.burn = false // used to trigger state reload when burning PK
   }
-
+  // Get the base64-url encoded private key from local storage 
   retrivePKFromDevice = async () => {
     var pk
     try {
@@ -33,13 +34,13 @@ export default class BurnerWallet extends Component {
     }
     if(pk != null){
       console.log("We found a PK:", pk)
-    } else {
+    } else { // if a PK wasn't found, generate a new one
       console.log("Didn't find a PK...")
       console.log("Generating new one")
       pk = await this.setNewPK()
       console.log("Here's the new PK:", pk)
     }
-    return BURNER_URL+pk
+    return pk
   }
   // This will use etherumjs-wallet and base64 to generate a new pk and save it to local storage
   generateEncodedPK = () => {
@@ -49,7 +50,7 @@ export default class BurnerWallet extends Component {
     let encodedPK = base64url.encode(pk_bytes);
     return encodedPK
   }
-
+// Warpper to save given private key to device local storage
   savePrivateKeyToDevice = async (privateKey) =>{
     try {
       let res = await AsyncStorage.setItem(PK_STORAGE_KEY, privateKey)
@@ -62,6 +63,7 @@ export default class BurnerWallet extends Component {
   setNewPK = async () =>{
     var encodedPK = this.generateEncodedPK();
     await this.savePrivateKeyToDevice(encodedPK);
+    // if function called from "burn" event
     if(this.burn){
       let url = BURNER_URL+encodedPK
       this.setState({URL:url})
@@ -71,7 +73,6 @@ export default class BurnerWallet extends Component {
   }
 
    updateQR = false // FLAG USED TO DISTINGUISH WHEN IT WILL UPDATE THE ADDRESS(i.e when current view = sendByAdrdres) or will send to new view
-   URL = ''
    handleEvent = (event) => {
     if(event == "qr"){
       console.log("I got a QR")
@@ -100,7 +101,8 @@ export default class BurnerWallet extends Component {
   }
   // Here we check if there's a private key in local storage
   async componentDidMount(){
-    let url = await this.retrivePKFromDevice()
+    let pk = await this.retrivePKFromDevice() // get PK from local storage
+    let url = BURNER_URL + pk + '?' + IGNORE_IDENTICAL_PARAM
     this.setState({URL: url})
   }
 
