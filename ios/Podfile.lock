@@ -1,5 +1,7 @@
 PODS:
   - boost-for-react-native (1.63.0)
+  - BVLinearGradient (2.5.4):
+    - React
   - DoubleConversion (1.1.6)
   - EXBarCodeScannerInterface (3.0.0)
   - EXCamera (3.0.0):
@@ -41,15 +43,17 @@ PODS:
   - glog (0.3.5)
   - React (0.58.6):
     - React/Core (= 0.58.6)
-  - react-native-camera (1.13.0):
+  - react-native-camera (1.13.1):
     - React
-    - react-native-camera/RCT (= 1.13.0)
-    - react-native-camera/RN (= 1.13.0)
-  - react-native-camera/RCT (1.13.0):
+    - react-native-camera/RCT (= 1.13.1)
+    - react-native-camera/RN (= 1.13.1)
+  - react-native-camera/RCT (1.13.1):
     - React
-  - react-native-camera/RN (1.13.0):
+  - react-native-camera/RN (1.13.1):
     - React
   - react-native-randombytes (3.5.2):
+    - React
+  - react-native-splash-screen (3.0.6):
     - React
   - React/Core (0.58.6):
     - yoga (= 0.58.6.React)
@@ -88,14 +92,15 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNGestureHandler (1.0.17):
+  - RNGestureHandler (1.1.0):
     - React
-  - RNVectorIcons (6.3.0):
+  - RNVectorIcons (6.4.2):
     - React
   - yoga (0.58.6.React)
 
 DEPENDENCIES:
   - boost-for-react-native
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXBarCodeScannerInterface (from `../node_modules/expo-barcode-scanner-interface/ios`)
   - EXCamera (from `../node_modules/expo-camera/ios`)
@@ -118,6 +123,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-randombytes (from `../node_modules/react-native-randombytes`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -131,6 +137,8 @@ DEPENDENCIES:
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
+  BVLinearGradient:
+    :path: ../node_modules/react-native-linear-gradient
   DoubleConversion:
     :podspec: ../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec
   EXBarCodeScannerInterface:
@@ -177,6 +185,8 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native-camera
   react-native-randombytes:
     :path: ../node_modules/react-native-randombytes
+  react-native-splash-screen:
+    :path: ../node_modules/react-native-splash-screen
   RNGestureHandler:
     :path: ../node_modules/react-native-gesture-handler
   RNVectorIcons:
@@ -186,6 +196,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXBarCodeScannerInterface: f871e63e9e6ce57894599e8704ed03d2bd17d03c
   EXCamera: ae7972f245ee1a949ff2da1b2af97b1276ad5e0c
@@ -207,12 +218,13 @@ SPEC CHECKSUMS:
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 130b87b2d5e2baac646954282cab87be986d98fc
-  react-native-camera: d3c7ee5c9a4ecee37c9c82c6deef884c74fef168
+  react-native-camera: ea856bd8b9d21691ab78a9b763ffe2c929421d61
   react-native-randombytes: 72fcf9b00ff80a28b7420d4c76286287c8ab9b0d
-  RNGestureHandler: c33871a91c10f7b4df79d1829fc8fe0d8ada0df0
-  RNVectorIcons: cb42a5653c046f12ca16c9480c571b52620559e8
+  react-native-splash-screen: d712b25c25f6671a15227f9b8579f87b2dbb0340
+  RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
+  RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   yoga: 32d7ef1081951e9a35a4c72a7be797598b138a48
 
-PODFILE CHECKSUM: ddf1280bb284e5f94b1d91880d638f867c74152b
+PODFILE CHECKSUM: 49f7ebef8eb4f0a9da015b73d41129df698486b6
 
 COCOAPODS: 1.3.1
