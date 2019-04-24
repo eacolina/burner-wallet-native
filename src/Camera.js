@@ -11,7 +11,7 @@ export default class Camera extends Component {
       Vibration.vibrate();
       this.found = true
     }
-    console.log(barcode.data);
+    // console.log(barcode.data);
     this.props.navigation.navigate('Home', {data: barcode.data}); // go back to burner webView and pass the decoded address
   }
   render() {

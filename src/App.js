@@ -24,7 +24,6 @@ AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
     componentDidMount(){
-        console.log("Imounted")
         SplashScreen.hide()
     }
     render() {
