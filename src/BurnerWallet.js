@@ -16,7 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import SplashScreen from './SplashScreen'
 
 let PK_STORAGE_KEY = 'private_key' 
-let BURNER_URL = 'https://burner-wallet-intern.herokuapp.com/pk#'
+let BURNER_URL = 'https://s.xdai.io/pk#'
 let IGNORE_IDENTICAL_PARAM = 'ignoreIdenticalPK=true' // used to prevent WebView from displaying 'Identical PK' alert
 export default class BurnerWallet extends Component {
   constructor() {
@@ -75,10 +75,11 @@ export default class BurnerWallet extends Component {
    updateQR = false // FLAG USED TO DISTINGUISH WHEN IT WILL UPDATE THE ADDRESS(i.e when current view = sendByAdrdres) or will send to new view
    handleEvent = (event) => {
     if(event == "qr"){
-      console.log("I got a QR")
+      // console.log("Send request")
       this.props.navigation.navigate('Camera')
     }
     if(event == "update_qr"){
+      // console.log("Update Request")
       this.props.navigation.navigate('Camera')
       this.updateQR = true
     }
@@ -89,16 +90,6 @@ export default class BurnerWallet extends Component {
     }
   }
 
-  componentWillReceiveProps(){
-    const destAddress = this.props.navigation.getParam('data', '');
-    if (destAddress != ''){
-      if(this.updateQR){
-        this.webref.injectJavaScript(`window.updateToAddress('${destAddress}')`)
-      } else {
-        this.webref.injectJavaScript(`window.sendToAddress('${destAddress}')`)
-      }
-    } 
-  }
   // Here we check if there's a private key in local storage
   async componentDidMount(){
     let pk = await this.retrivePKFromDevice() // get PK from local storage
@@ -106,9 +97,19 @@ export default class BurnerWallet extends Component {
     this.setState({URL: url})
   }
 
+  componentDidUpdate(){
+    const destAddress = this.props.navigation.getParam('data', '');
+    if (destAddress != ''){
+      if(this.updateQR){
+        this.webref.injectJavaScript(`window.updateToAddress('${destAddress}')`)
+      } else {
+        this.webref.injectJavaScript(`window.sendToAddress('${destAddress}')`)
+      }
+      this.updateQR = false
+    } 
+  }
+
   render() {
-    console.log("Rendering")
-    console.log("URL", this.state.URL)
     let runFirst = `
       window.isReactNative = true
     `

@@ -29,6 +29,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		15CB5279F3F2447FB443E1A6 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 272679114A474B1A9990FF81 /* MaterialCommunityIcons.ttf */; };
 		344907CD30BF4AD880280224 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5184B176CF7946B4ACF09906 /* Octicons.ttf */; };
+		34815AA02270CE53006E885B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		42FDF37D0FA8452593954FD4 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7F3EA6BF64C6AB42C5697 /* SimpleLineIcons.ttf */; };
 		53B0CE14C938453D8BF03180 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 297B4C782D8B49BB9420CD31 /* FontAwesome5_Brands.ttf */; };
 		6AA80D4A27164325B4A3D38B /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BBCB855F5B2478CA5A8B73F /* FontAwesome5_Solid.ttf */; };
@@ -379,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34815AA02270CE53006E885B /* JavaScriptCore.framework in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
 				7AB063376D86100B312A6545 /* libPods-burner_nativeTests.a in Frameworks */,
 			);
@@ -739,6 +741,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1360,6 +1363,7 @@
 					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = burner_native/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1387,6 +1391,7 @@
 					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = burner_native/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
